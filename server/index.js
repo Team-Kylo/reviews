@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const env = require(dotenv).config();
+const env = require('dotenv').config();
 const port = process.env.PORT;
 
 
