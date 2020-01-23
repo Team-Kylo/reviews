@@ -1,0 +1,26 @@
+{
+  "name": "reviews",
+  "version": "1.0.0",
+  "description": "The reviews component and image carousel and reviews modules.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Team-Kylo/reviews.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Team-Kylo/reviews/issues"
+  },
+  "homepage": "https://github.com/Team-Kylo/reviews#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.2"
+  }
+}
