@@ -16,7 +16,12 @@ app.get('/reviews', (req, res) => {
   db.schema.Reviews.find({})
     .then((dbObj) => {
       res.send(dbObj[Math.ceil(Math.random() * 100)]);
-  });
+  })
+    .catch((err) => {
+      if (err) {
+        res.sendStatus(404);
+      }
+    });
 })
 
 app.listen(port, () => {
