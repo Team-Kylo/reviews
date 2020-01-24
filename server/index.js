@@ -6,8 +6,6 @@ const port = process.env.PORT;
 const db = require('../db/index.js');
 let Reviews = require('../db/schema.js');
 
-
-
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 
