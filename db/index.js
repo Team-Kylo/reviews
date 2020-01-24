@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var schema = require('./schema.js');
 mongoose.connect('mongodb://localhost/reviews');
 
 var db = mongoose.connection;
