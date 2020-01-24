@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var reviewSchema= new mongoose.Schema({
+var reviewSchema = new mongoose.Schema({
   id: Number,
   username: String,
   datePosted: Date,
@@ -12,6 +12,4 @@ var reviewSchema= new mongoose.Schema({
 
 var Reviews = mongoose.model('Reviews', reviewSchema);
 
-module.exports = {
-  Reviews
-}
+module.exports.Reviews = Reviews
