@@ -7,14 +7,14 @@ mongoose.connect('mongodb://localhost/reviews');
 
 // Formatted date maker
 let dateFormatter = () => {
-  var date = Faker.date.past().toString();
-  var dateFormatted = date.substring(4, 10) + ',' + date.substring(10, 15)
+  let date = Faker.date.past().toString();
+  let dateFormatted = date.substring(4, 10) + ',' + date.substring(10, 15)
   return dateFormatted
 }
 
 // Weighted rating generator function
 let ratingGenerator = () => {
-  var randomNum = Math.random() * 10;
+  let randomNum = Math.random() * 10;
   if (randomNum > 0 && randomNum < 5) {
     return 5;
   } else if (randomNum > 5 && randomNum < 6.5) {
