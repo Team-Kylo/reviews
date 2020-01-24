@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-var reviewSchema = new mongoose.Schema({
+let reviewSchema = new mongoose.Schema({
   dbId: Number,
   username: String,
   datePosted: Date,
@@ -10,6 +10,6 @@ var reviewSchema = new mongoose.Schema({
   rating: Number
 })
 
-var Reviews = mongoose.model('Reviews', reviewSchema);
+let Reviews = mongoose.model('Reviews', reviewSchema);
 
 module.exports.Reviews = Reviews

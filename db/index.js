@@ -1,5 +1,5 @@
-var mongoose = require('mongoose');
-var schema = require('./schema.js');
+const mongoose = require('mongoose');
+let schema = require('./schema.js');
 mongoose.connect('mongodb://localhost/reviews');
 // let newInstanceTest = new schema.Reviews({
 //   id: 1,
@@ -12,7 +12,7 @@ mongoose.connect('mongodb://localhost/reviews');
 // }).save().then(() => {
 //   console.log('You saved this!')
 // })
-var db = mongoose.connection;
+const db = mongoose.connection;
 db.on('error', () => {
   console.log('Error connecting to database')
 })

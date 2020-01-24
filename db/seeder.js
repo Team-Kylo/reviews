@@ -1,19 +1,19 @@
-var Faker = require('faker');
-var schema = require('./schema.js');
-var mongoose = require('mongoose');
+const Faker = require('faker');
+let schema = require('./schema.js');
+const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/reviews');
 
 
 
 // Formatted date maker
-var dateFormatter = () => {
+let dateFormatter = () => {
   var date = Faker.date.past().toString();
   var dateFormatted = date.substring(4, 10) + ',' + date.substring(10, 15)
   return dateFormatted
 }
 
 // Weighted rating generator function
-var ratingGenerator = () => {
+let ratingGenerator = () => {
   var randomNum = Math.random() * 10;
   if (randomNum > 0 && randomNum < 5) {
     return 5;
