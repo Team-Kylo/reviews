@@ -1,11 +1,11 @@
-// This is my react app
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ReviewBox from './reviewBox.jsx';
 
 
 const App = () => {
   return (<div>
-    This is a test for react
+    <ReviewBox />
   </div>
   )
 }
