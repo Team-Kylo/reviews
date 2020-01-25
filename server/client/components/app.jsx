@@ -5,7 +5,7 @@ import ReviewBox from './reviewBox.jsx';
 
 const App = () => {
   return (<div>
-    <ReviewBox styles={{"width":500, "height":300}}/>
+    <ReviewBox />
   </div>
   )
 }
