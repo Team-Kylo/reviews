@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import AvatarImg from './avatar.jsx';
+import styled from 'styled-components';
 
+const Box = styled.div`
+  width: 65%;
+  height: 250px;
+`
 class ReviewBox extends React.Component {
   constructor(props) {
     super(props)
@@ -9,9 +14,9 @@ class ReviewBox extends React.Component {
 
   render() {
     return (
-      <div id="box">
+      <Box>
         <AvatarImg />
-      </div>
+      </Box>
     )
   }
 }
