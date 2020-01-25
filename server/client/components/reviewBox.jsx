@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import AvatarImg from './avatar.jsx';
 
 class ReviewBox extends React.Component {
   constructor(props) {
@@ -8,8 +9,8 @@ class ReviewBox extends React.Component {
 
   render() {
     return (
-      <div>
-        Hello
+      <div id="box">
+        <AvatarImg />
       </div>
     )
   }
