@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server",
     "build": "webpack --config webpack.config.js --watch",
-    "seed": "node seeder.js",
+    "seed": "node db/seeder.js",
     "db": "node index.js"
   },
   "repository": {
