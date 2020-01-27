@@ -1,6 +1,5 @@
 // This is your avatar image component
 import React from 'react';
-import ReactDOM from 'react-dom';
 const axios = require('axios');
 
 class AvatarImg extends React.Component {
@@ -15,9 +14,8 @@ class AvatarImg extends React.Component {
   componentDidMount() {
     axios.get('/reviews')
       .then((response) => {
-        console.log(response.data);
         this.setState({
-          imageUrl: response.data.imageUrl
+          imageUrl: response.data.avatarImgUrl
         })
       })
   }

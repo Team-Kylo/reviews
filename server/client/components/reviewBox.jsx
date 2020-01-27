@@ -1,6 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import AvatarImg from './avatar.jsx';
+import Stars from './stars.jsx';
+import ReviewText from './reviewTxt.jsx';
 import styled from 'styled-components';
 
 const Box = styled.div`
@@ -16,6 +17,8 @@ class ReviewBox extends React.Component {
     return (
       <Box>
         <AvatarImg />
+        <Stars />
+        <ReviewText />
       </Box>
     )
   }
