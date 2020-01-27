@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import AvatarImg from './avatar.jsx';
+import Stars from './stars.jsx';
 import styled from 'styled-components';
 
 const Box = styled.div`
