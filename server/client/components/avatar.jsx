@@ -1,6 +1,5 @@
 // This is your avatar image component
 import React from 'react';
-import ReactDOM from 'react-dom';
 const axios = require('axios');
 
 class AvatarImg extends React.Component {
