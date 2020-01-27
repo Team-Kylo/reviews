@@ -16,9 +16,9 @@ class ReviewText extends React.Component {
 
 
   componentDidMount() {
-    axios.get('/reviews')
+    const id = window.location.search.slice(1);
+    axios.get(`/${id}`)
     .then((response) => {
-      console.log(response.data.text);
       this.setState({
         text: response.data.text
       })

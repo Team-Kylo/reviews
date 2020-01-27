@@ -19,7 +19,8 @@ class Stars extends React.Component {
 
   // retrieve rating for rendering purposes
   componentDidMount() {
-    axios.get('/reviews')
+    const id = window.location.search.slice(1);
+    axios.get(`/${id}`)
     .then((response) => {
       this.setState({
         starRating: response.data.rating
