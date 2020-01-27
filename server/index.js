@@ -10,10 +10,10 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 
 // a route to request all review objects from the db
-app.get('/reviews', (req, res) => {
+app.get('/:id', (req, res) => {
   db.schema.Reviews.find({})
     .then((dbObj) => {
-      res.send(dbObj[Math.ceil(Math.random() * 100)]);
+      res.send(dbObj[req.params.id]);
   })
     .catch((err) => {
       if (err) {
