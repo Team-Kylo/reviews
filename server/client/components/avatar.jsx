@@ -14,6 +14,7 @@ class AvatarImg extends React.Component {
   componentDidMount() {
     axios.get('/reviews')
       .then((response) => {
+        console.log('three: ', response);
         this.setState({
           imageUrl: response.data.avatarImgUrl
         })

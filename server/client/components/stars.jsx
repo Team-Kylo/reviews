@@ -21,6 +21,7 @@ class Stars extends React.Component {
   componentDidMount() {
     axios.get('/reviews')
     .then((response) => {
+      console.log('one:, ', response)
       this.setState({
         starRating: response.data.rating
       })

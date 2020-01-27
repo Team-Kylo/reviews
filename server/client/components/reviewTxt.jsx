@@ -18,7 +18,7 @@ class ReviewText extends React.Component {
   componentDidMount() {
     axios.get('/reviews')
     .then((response) => {
-      console.log(response.data.text);
+      console.log('two: ', response)
       this.setState({
         text: response.data.text
       })
