@@ -16,6 +16,7 @@ class ReviewBox extends React.Component {
     return (
       <Box>
         <AvatarImg />
+        <Stars />
       </Box>
     )
   }
