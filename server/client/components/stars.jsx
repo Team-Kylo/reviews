@@ -48,9 +48,7 @@ class Stars extends React.Component {
   render() {
     return (
       <Star>
-        <div>
           {this.handleRating(this.state.starRating)}
-          </div>
         </Star>
     )
   }
