@@ -24,6 +24,7 @@ class ReviewText extends React.Component {
       })
     })
   }
+
   render() {
     return (
       <Text>
