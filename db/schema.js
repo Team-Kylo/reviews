@@ -7,7 +7,8 @@ let reviewSchema = new mongoose.Schema({
   imageUrl: String,
   avatarImgUrl: String,
   text: String,
-  rating: Number
+  rating: Number,
+  itemForSale: String
 })
 
 let Reviews = mongoose.model('Reviews', reviewSchema);
