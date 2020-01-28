@@ -2,3 +2,6 @@ node_modules
 .env
 server/public/index.js
 coverage
+.eslintrc.js
+webpack.config.js
+jest.config.js
