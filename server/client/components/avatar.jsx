@@ -23,7 +23,7 @@ class AvatarImg extends React.Component {
 
   render() {
     return (
-      <div class="avatarImg">
+      <div className="avatarImg">
         <img src={this.state.imageUrl}></img>
       </div>
     )
