@@ -29,7 +29,7 @@ let ratingGenerator = () => {
 }
 
 // for 100 entries
-for (var i = 0; i < 100; i++) {
+for (var i = 10; i < 100; i++) {
   // create individual objects
   let document = new schema.Reviews({
     // object id is the index
@@ -39,9 +39,9 @@ for (var i = 0; i < 100; i++) {
     // object date is dateFormatter function
     datePosted: dateFormatter(),
     // object imageURL https://www.placecage.com/30/30
-    imageUrl: 'https://www.placecage.com/30/30',
+    imageUrl: `https://www.placecage.com/100/1${i}`,
     // object AVATARIMGURL https://www.placecage.com/50/50
-    avatarImgUrl: 'https://www.placecage.com/50/50',
+    avatarImgUrl: `https://www.placecage.com/200/2${i}`,
     // object text is Faker.lorem.paragraph()
     text: Faker.lorem.paragraph(),
     // object rating is a call to helper function to 'create randomized ratings'
