@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 const axios = require('axios');
 
 const ItemAndLink = styled.div`
@@ -21,19 +22,19 @@ class ItemLink extends React.Component {
     super(props);
     this.state = {
       item: '',
-      imageUrl: ''
-    }
+      imageUrl: '',
+    };
   }
 
   componentDidMount() {
     const id = window.location.search.slice(1);
     axios.get(`/${id}`)
-    .then((response) => {
-      this.setState({
-        item: response.data.itemForSale,
-        imageUrl: response.data.imageUrl
-      })
-    })
+      .then((response) => {
+        this.setState({
+          item: response.data.itemForSale,
+          imageUrl: response.data.imageUrl,
+        });
+      });
   }
 
   render() {
@@ -45,7 +46,7 @@ class ItemLink extends React.Component {
         <Link src={this.state.imageUrl}>
         </Link>
       </ItemAndLink>
-    )
+    );
   }
 }
 

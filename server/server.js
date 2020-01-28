@@ -1,6 +1,7 @@
-let app = require('./index.js');
+const app = require('./index.js');
 require('dotenv').config();
-let port = process.env.PORT;
+
+const port = process.env.PORT;
 
 app.listen(port, () => {
   console.log(`Tuning in on ${port}`);

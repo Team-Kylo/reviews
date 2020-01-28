@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 const axios = require('axios');
 
 const Text = styled.div`
@@ -8,21 +9,21 @@ const Text = styled.div`
 
 class ReviewText extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      text: ''
-    }
+      text: '',
+    };
   }
 
 
   componentDidMount() {
     const id = window.location.search.slice(1);
     axios.get(`/${id}`)
-    .then((response) => {
-      this.setState({
-        text: response.data.text
-      })
-    })
+      .then((response) => {
+        this.setState({
+          text: response.data.text,
+        });
+      });
   }
 
   render() {
@@ -30,7 +31,7 @@ class ReviewText extends React.Component {
       <Text>
         {this.state.text}
       </Text>
-    )
+    );
   }
 }
 

@@ -1,14 +1,14 @@
 // This is your avatar image component
 import React from 'react';
+
 const axios = require('axios');
 
 class AvatarImg extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      imageUrl: ''
-    }
-
+      imageUrl: '',
+    };
   }
 
   componentDidMount() {
@@ -16,18 +16,18 @@ class AvatarImg extends React.Component {
     axios.get(`/${id}`)
       .then((response) => {
         this.setState({
-          imageUrl: response.data.avatarImgUrl
-        })
-      })
+          imageUrl: response.data.avatarImgUrl,
+        });
+      });
   }
 
   render() {
     return (
       <div className="avatarImg">
-        <img src={this.state.imageUrl}></img>
+        <img src={this.state.imageUrl} alt="" />
       </div>
     )
   }
 }
 
-export default AvatarImg
+export default AvatarImg;

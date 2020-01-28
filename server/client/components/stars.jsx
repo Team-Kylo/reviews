@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 const axios = require('axios');
 
 
@@ -10,10 +11,11 @@ const Star = styled.div`
 
 class Stars extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      starRating: 0
-    }
+      starRating: 0,
+    };
+
     this.handleRating = this.handleRating.bind(this);
   }
 
@@ -21,12 +23,12 @@ class Stars extends React.Component {
   componentDidMount() {
     const id = window.location.search.slice(1);
     axios.get(`/${id}`)
-    .then((response) => {
-      this.setState({
-        starRating: response.data.rating
-      })
-    })
-  };
+      .then((response) => {
+        this.setState({
+          starRating: response.data.rating,
+        });
+      });
+  }
 
   // render stars based on rating received
   handleRating(rating) {
@@ -48,9 +50,9 @@ class Stars extends React.Component {
   render() {
     return (
       <Star>
-          {this.handleRating(this.state.starRating)}
-        </Star>
-    )
+        {this.handleRating(this.state.starRating)}
+      </Star>
+    );
   }
 }
 
