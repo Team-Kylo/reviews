@@ -1,6 +1,22 @@
+const request = require('supertest');
 const app = require('../index.js');
+const mongoose = require('mongoose');
 
-it('should tell me if JEST is working', (done) => {
-  expect(1).toBe(1);
-  done();
+describe('Should respond to get requests to an id', () => {
+  it('responds with an object of JSON data', (done) => {
+    return request(app)
+      .get('/20')
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .then((resp) => {
+        expect(resp.body.username).toEqual("Clint_Dibbert");
+        done()
+      })
+      .catch((err) => {
+        if (err) {
+          console.log(err);
+          done()
+        }
+      })
+  })
 })

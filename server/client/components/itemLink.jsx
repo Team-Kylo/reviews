@@ -30,7 +30,7 @@ class ItemLink extends React.Component {
     axios.get(`/${id}`)
     .then((response) => {
       this.setState({
-        item: 'PH',
+        item: response.data.itemForSale,
         imageUrl: response.data.imageUrl
       })
     })

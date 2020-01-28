@@ -14,16 +14,12 @@ app.get('/:id', (req, res) => {
   db.schema.Reviews.find({dbId: req.params.id})
     .then((dbObj) => {
       res.json(dbObj[0]);
-  })
+    })
     .catch((err) => {
       if (err) {
         res.sendStatus(404);
       }
     });
-})
-
-app.listen(port, () => {
-  console.log(`Tuning into ${port}`);
 })
 
 module.exports = app;
