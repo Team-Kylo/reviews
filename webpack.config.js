@@ -4,7 +4,7 @@ module.exports = {
   watch: true,
   output: {
     path: path.resolve(__dirname, 'server/public'),
-    filename: 'index.js'
+    filename: 'index.js',
   },
   module: {
     rules: [
@@ -12,15 +12,15 @@ module.exports = {
         test: /\.js$|jsx/,
         exclude: /(node_modules)/,
         resolve: {
-          extensions: ['.js', '.jsx']
+          extensions: ['.js', '.jsx'],
         },
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
-          }
-        }
-      }
-    ]
-  }
-}
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
+        },
+      },
+    ],
+  },
+};
