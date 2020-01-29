@@ -7,10 +7,11 @@ const Text = styled.div`
   width: 250px;
 `;
 
-const ReviewText = ({text}) => (
+const ReviewText = ({ text }) => (
   <Text>
     {text}
   </Text>
 );
+
 
 export default ReviewText;

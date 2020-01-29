@@ -25,10 +25,10 @@ class ReviewBox extends React.Component {
       username: '',
       datePosted: '',
     };
-  };
+  }
 
   componentDidMount() {
-    const id = window.location.search.slice(1);
+    const id = document.location.search.slice(1);
     axios.get(`/${id}`)
       .then((response) => {
         this.setState({
@@ -42,16 +42,26 @@ class ReviewBox extends React.Component {
         });
       });
   }
+
   render() {
+    const {
+      imageUrl,
+      starRating,
+      text,
+      username,
+      datePosted,
+      item,
+      itemImageUrl,
+    } = this.state;
     return (
-      <Box>
-        <AvatarImg image={this.state.imageUrl} />
-        <Stars stars={this.state.starRating} />
-        <ReviewText text={this.state.text} />
-        <UsernameAndDate name={this.state.username} date={this.state.datePosted} />
-        <ItemLink item={this.state.item} link={this.state.itemImageUrl} />
+      <Box className="review">
+        <AvatarImg image={imageUrl} />
+        <Stars stars={starRating} />
+        <ReviewText text={text} />
+        <UsernameAndDate name={username} date={datePosted} />
+        <ItemLink item={item} link={itemImageUrl} />
       </Box>
-    )
+    );
   }
 }
 
