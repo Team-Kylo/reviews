@@ -1,5 +1,7 @@
+/* eslint-disable no-else-return */
 import React from 'react';
 import styled from 'styled-components';
+
 const axios = require('axios');
 
 
@@ -8,50 +10,29 @@ const Star = styled.div`
   height: 50px;
 `;
 
-class Stars extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      starRating: 0
-    }
-    this.handleRating = this.handleRating.bind(this);
-  }
-
-  // retrieve rating for rendering purposes
-  componentDidMount() {
-    const id = window.location.search.slice(1);
-    axios.get(`/${id}`)
-    .then((response) => {
-      this.setState({
-        starRating: response.data.rating
-      })
-    })
-  };
-
+const Stars = ({stars}) => {
   // render stars based on rating received
-  handleRating(rating) {
-    if (this.state.starRating === 0) {
+  const handleRating = (rating) => {
+    if (stars === 0) {
       return '☆☆☆☆☆';
-    } else if (this.state.starRating === 1) {
+    } else if (stars === 1) {
       return '★☆☆☆☆';
-    } else if (this.state.starRating === 2) {
+    } else if (stars === 2) {
       return '★★☆☆☆';
-    } else if (this.state.starRating === 3) {
+    } else if (stars === 3) {
       return '★★★☆☆';
-    } else if (this.state.starRating === 4) {
+    } else if (stars === 4) {
       return '★★★★☆';
     } else {
       return '★★★★★';
     }
   }
 
-  render() {
     return (
       <Star>
-          {this.handleRating(this.state.starRating)}
-        </Star>
-    )
-  }
-}
+        {handleRating(stars)}
+      </Star>
+    );
+};
 
 export default Stars;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 const axios = require('axios');
 
 const ItemAndLink = styled.div`
@@ -16,37 +17,15 @@ const Link = styled.img`
   color: green;
 `;
 
-class ItemLink extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      item: '',
-      imageUrl: ''
-    }
-  }
+const ItemLink = ({item, link}) => (
+  <ItemAndLink>
+    <Item>
+      {item}
+    </Item>
+      <Link src={link}>
+    </Link>
+  </ItemAndLink>
+);
 
-  componentDidMount() {
-    const id = window.location.search.slice(1);
-    axios.get(`/${id}`)
-    .then((response) => {
-      this.setState({
-        item: 'PH',
-        imageUrl: response.data.imageUrl
-      })
-    })
-  }
-
-  render() {
-    return (
-      <ItemAndLink>
-        <Item>
-          {this.state.item}
-        </Item>
-        <Link src={this.state.imageUrl}>
-        </Link>
-      </ItemAndLink>
-    )
-  }
-}
 
 export default ItemLink;
