@@ -29,7 +29,7 @@ const Stars = ({stars}) => {
   }
 
     return (
-      <Star>
+      <Star className="rating">
         {handleRating(stars)}
       </Star>
     );

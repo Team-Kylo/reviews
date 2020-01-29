@@ -2,13 +2,11 @@
 import React from 'react';
 import Enzyme, { configure, shallow, mount, render } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import ReviewBox from '../client/components/reviewBox';
-import Stars from '../client/components/stars';
-
 
 configure({ adapter: new Adapter() });
+
 const request = require('supertest');
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const app = require('../index.js');
 
 describe('Should respond to get requests to an id', () => {
@@ -30,13 +28,5 @@ describe('Should respond to get requests to an id', () => {
           done();
         }
       });
-  });
-});
-
-describe('<ReviewBox />', () => {
-  it('should contain children', () => {
-    const wrapper = shallow(<ReviewBox />);
-    console.log(wrapper);
-    expect(wrapper.contains(<AvatarImg />)).to.equal(true);
   });
 });

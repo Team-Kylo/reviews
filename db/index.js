@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 let schema = require('./schema.js');
-mongoose.connect('mongodb://localhost/reviews');
+mongoose.connect(process.env.DATABASE_URL, { useUnifiedTopology: true, useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', () => {
   console.log('Error connecting to database')
