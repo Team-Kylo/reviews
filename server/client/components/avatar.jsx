@@ -1,7 +1,6 @@
 // This is your avatar image component
 import React from 'react';
 import styled from 'styled-components';
-const axios = require('axios');
 
 const Avatar = styled.img`
   border-radius: 1.3em;

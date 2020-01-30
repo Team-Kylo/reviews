@@ -32,7 +32,7 @@ const UsernameAndDate = ({name, date}) => {
   return (
     <NameAndDate>
       <Username>
-        {name}
+        {name.substring(0, 9)}
       </Username>
       <Date>
         {dateFormatter(date)}
@@ -41,5 +41,4 @@ const UsernameAndDate = ({name, date}) => {
   );
 };
 
-export default { UsernameAndDate, dateFormatter };
-
+export default UsernameAndDate;

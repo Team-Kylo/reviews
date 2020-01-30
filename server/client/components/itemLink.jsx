@@ -7,7 +7,6 @@ const ItemAndLink = styled.div`
   grid-column-start: col-two;
   grid-row-start: row-four;
   display: flex;
-  padding-top: 15px
 `;
 const Item = styled.div`
   font-size: 12px;
