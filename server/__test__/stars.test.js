@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Stars from './stars';
+import Stars from '../client/components/stars';
 
 
 
