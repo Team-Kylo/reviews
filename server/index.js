@@ -11,7 +11,6 @@ app.use(bodyParser.json());
 
 // a route to request all review objects from the db
 app.get('/:id', (req, res) => {
-  const id = req.params.id
   db.schema.Reviews.find({})
     .then((dbObj) => {
       res.json(dbObj);
