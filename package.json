@@ -4,7 +4,7 @@
   "description": "The reviews component and image carousel and reviews modules.",
   "main": "index.js",
   "scripts": {
-    "test": "jest --detectOpenHandles --coverage",
+    "test": "jest --detectOpenHandles --coverage --forceExit",
     "start": "nodemon server/server.js",
     "build": "webpack -d --watch",
     "seed": "node db/seeder.js",
@@ -36,8 +36,6 @@
     "path": "^0.12.7",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-router": "^5.1.2",
-    "react-router-dom": "^5.1.2",
     "styled-components": "^5.0.0",
     "supertest": "^4.0.2",
     "webpack-cli": "^3.3.10"

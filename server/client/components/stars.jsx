@@ -8,6 +8,9 @@ const axios = require('axios');
 const Star = styled.div`
   width: 50px;
   height: 50px;
+  display: grid;
+  grid-column-start: col-two;
+  grid-row-start: row-two;
 `;
 
 const Stars = ({stars}) => {

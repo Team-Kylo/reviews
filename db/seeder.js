@@ -47,7 +47,7 @@ for (var i = 10; i < 100; i++) {
     // object rating is a call to helper function to 'create randomized ratings'
     rating: ratingGenerator(),
     // item for sale is Faker.lorem.sentence()
-    itemForSale: Faker.commerce.productName();
+    itemForSale: Faker.commerce.productName(),
   })
-  .save()
+    .save();
 }
