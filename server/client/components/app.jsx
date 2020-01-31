@@ -2,15 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReviewBox from './reviewBox';
 
-const id = document.location.search.slice(1);
-
+let id = document.location.search.slice(1);
+id = Number(id);
 const App = () => {
   return (
     <div>
     <ReviewBox id={id} />
-    <ReviewBox id={25} />
-    <ReviewBox id={26} />
-    <ReviewBox id={27} />
+    <ReviewBox id={id += 1} />
+    <ReviewBox id={id += 2} />
+    <ReviewBox id={id += 3} />
   </div>
   );
 };

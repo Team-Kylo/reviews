@@ -36,13 +36,13 @@ class ReviewBox extends React.Component {
     axios.get(`/${this.props.id}`)
       .then((response) => {
         this.setState({
-          imageUrl: response.data.avatarImgUrl,
-          item: response.data.itemForSale,
-          itemImageUrl: response.data.imageUrl,
-          text: response.data.text,
-          starRating: response.data.rating,
-          username: response.data.username,
-          datePosted: response.data.datePosted.slice(0, 10),
+          imageUrl: response.data[this.props.id].avatarImgUrl,
+          item: response.data[this.props.id].itemForSale,
+          itemImageUrl: response.data[this.props.id].imageUrl,
+          text: response.data[this.props.id].text,
+          starRating: response.data[this.props.id].rating,
+          username: response.data[this.props.id].username,
+          datePosted: response.data[this.props.id].datePosted.slice(0, 10),
         });
       });
   }
