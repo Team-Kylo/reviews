@@ -15,6 +15,7 @@ const MoreReviews = styled.button`
   background: none;
   color: black;
   font-size: 13px;
+  overflow-y: hidden;
 `;
 
 const TotalReviews = styled.div`
@@ -52,6 +53,7 @@ const AllReviews = styled.button`
   padding: 8px 12px 8px 25px;
   font-weight: bold;
   display: inline-block;
+  overflow-y: hidden;
 `;
 
 class App extends React.Component {
@@ -117,9 +119,14 @@ class App extends React.Component {
   }
 
   render() {
-    // if (moreReviews)
+    let button;
+    if (this.state.moreReviews) {
+      button = <AllReviews className="button">Read All Reviews</AllReviews>;
+    } else {
+      button = <MoreReviews onClick={this.flag} className="button"><u><b>+ More</b></u></MoreReviews>;
+    }
     return (
-      <div>
+      <div className="reviews">
         <TotalReviews>
           <Reviews>
             Reviews
@@ -134,7 +141,9 @@ class App extends React.Component {
         {this.state.reviews.map((review) => {
           return (<ReviewBox id={id} key={review.dbId}>{id += 1}</ReviewBox>);
         })}
-        <MoreReviews onClick={this.flag}><u><b>+ More</b></u></MoreReviews>
+        <div className="button">
+          {button}
+        </div>
       </div>
     );
   }
