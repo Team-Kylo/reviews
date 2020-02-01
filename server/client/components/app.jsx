@@ -33,7 +33,7 @@ const Stars = styled.div`
 const Reviews = styled.div`
   font-size: 18px;
   font: Sans-serif;
-  padding-top: 5px;
+  padding-top: 2px;
 `;
 
 const NumOfReviews = styled.div`
@@ -59,8 +59,11 @@ class App extends React.Component {
     super(props);
     this.state = {
       moreReviews: false,
-      allReviews: 0,
+      averageReviews: 0,
       numberOfReviews: 0,
+      currentReviews: [],
+      firstFour: [],
+      lastSixteen: [],
     };
     this.flag = this.flag.bind(this);
   }
@@ -69,21 +72,30 @@ class App extends React.Component {
     axios.get(`/${id}`)
       .then((response) => {
         let averageRating = 0;
+        let currentReviews = [];
         response.data.forEach((item) => {
           averageRating += item.rating;
+          currentReviews.push(item);
         });
+        currentReviews = currentReviews.slice(id, id + 20);
+        let firstFour = currentReviews.slice(0, 4);
+        let lastSixteen = currentReviews.slice(4);
+        console.log(firstFour, lastSixteen, currentReviews);
         this.setState({
-          allReviews: averageRating / response.data.length,
+          averageReviews: averageRating / response.data.length,
           numberOfReviews: response.data.length,
+          currentReviews,
+          firstFour,
+          lastSixteen,
         });
       });
   }
 
   flag(event) {
+    event.preventDefault();
     this.setState({
       moreReviews: true,
     });
-    event.preventDefault();
   }
   totalStars(stars) {
     if (stars < 1 && stars > 0) {
@@ -100,6 +112,7 @@ class App extends React.Component {
       return '★★★★★';
     }
   }
+
   render() {
     if (this.state.moreReviews === false) {
       return (
@@ -109,7 +122,7 @@ class App extends React.Component {
               Reviews
             </Reviews>
             <Stars>
-              {this.totalStars(this.state.allReviews)}
+              {this.totalStars(this.state.averageReviews)}
             </Stars>
             <NumOfReviews>
               {`(${this.state.numberOfReviews})`}
@@ -130,7 +143,7 @@ class App extends React.Component {
               Reviews
             </Reviews>
             <Stars>
-              {this.totalStars(this.state.allReviews)}
+              {this.totalStars(this.state.averageReviews)}
             </Stars>
             <NumOfReviews>
               {`(${this.state.numberOfReviews})`}
