@@ -78,9 +78,8 @@ class App extends React.Component {
           currentReviews.push(item);
         });
         currentReviews = currentReviews.slice(id, id + 20);
-        let firstFour = currentReviews.slice(0, 4);
-        let lastSixteen = currentReviews.slice(4);
-        console.log(firstFour, lastSixteen, currentReviews);
+        const firstFour = currentReviews.slice(0, 4);
+        const lastSixteen = currentReviews.slice(4);
         this.setState({
           averageReviews: averageRating / response.data.length,
           numberOfReviews: response.data.length,
@@ -97,45 +96,24 @@ class App extends React.Component {
       moreReviews: true,
     });
   }
+
   totalStars(stars) {
     if (stars < 1 && stars > 0) {
       return '☆☆☆☆☆';
-    } else if (stars >= 1 && stars < 2) {
+    } if (stars >= 1 && stars < 2) {
       return '★☆☆☆☆';
-    } else if (stars >= 2 && stars < 3) {
+    } if (stars >= 2 && stars < 3) {
       return '★★☆☆☆';
-    } else if (stars >= 3 && stars < 4) {
+    } if (stars >= 3 && stars < 4) {
       return '★★★☆☆';
-    } else if (stars >= 4 && stars < 5) {
+    } if (stars >= 4 && stars < 5) {
       return '★★★★☆';
-    } else {
-      return '★★★★★';
     }
+    return '★★★★★';
   }
 
   render() {
-    if (this.state.moreReviews === false) {
-      return (
-        <div>
-          <TotalReviews>
-            <Reviews>
-              Reviews
-            </Reviews>
-            <Stars>
-              {this.totalStars(this.state.averageReviews)}
-            </Stars>
-            <NumOfReviews>
-              {`(${this.state.numberOfReviews})`}
-            </NumOfReviews>
-            </TotalReviews>
-            <ReviewBox id={id} />
-            <ReviewBox id={id + 1} />
-            <ReviewBox id={id + 2} />
-            <ReviewBox id={id + 3} />
-          <MoreReviews onClick={this.flag}><u><b>+ More</b></u></MoreReviews>
-        </div>
-      );
-    }
+    if (!this.state.moreReviews) {
       return (
         <div>
           <TotalReviews>
@@ -149,31 +127,58 @@ class App extends React.Component {
               {`(${this.state.numberOfReviews})`}
             </NumOfReviews>
           </TotalReviews>
-          <div>
-            <ReviewBox id={id} />
-            <ReviewBox id={id + 1} />
-            <ReviewBox id={id + 2} />
-            <ReviewBox id={id + 3} />
-            <ReviewBox id={id + 4} />
-            <ReviewBox id={id + 5} />
-            <ReviewBox id={id + 6} />
-            <ReviewBox id={id + 7} />
-            <ReviewBox id={id + 8} />
-            <ReviewBox id={id + 9} />
-            <ReviewBox id={id + 10} />
-            <ReviewBox id={id + 11} />
-            <ReviewBox id={id + 12} />
-            <ReviewBox id={id + 13} />
-            <ReviewBox id={id + 14} />
-            <ReviewBox id={id + 15} />
-            <ReviewBox id={id + 16} />
-            <ReviewBox id={id + 17} />
-            <ReviewBox id={id + 18} />
-            <ReviewBox id={id + 19} />
-            <AllReviews>Read All Reviews</AllReviews>
-          </div>
+          {this.state.firstFour.map((review) => <ReviewBox id={id} key={review.dbId}>{id += 1}</ReviewBox>)}
+          <MoreReviews onClick={this.flag}><u><b>+ More</b></u></MoreReviews>
         </div>
-     )
+      );
+    }
+    // if (this.state.moreReviews) {
+    //   return (
+    //     <div>
+    //       { this.state.lastSixteen.map((reviews) => <ReviewBox id={id} key={reviews.dbId}>{id += 1}</ReviewBox>) }
+    //       <AllReviews>Read All Reviews</AllReviews>
+
+    //     </div>
+    //   );
+    // }
+    return (
+      <div>
+        <TotalReviews>
+          <Reviews>
+            Reviews
+          </Reviews>
+          <Stars>
+            {this.totalStars(this.state.averageReviews)}
+          </Stars>
+          <NumOfReviews>
+            {`(${this.state.numberOfReviews})`}
+          </NumOfReviews>
+        </TotalReviews>
+        <div>
+          <ReviewBox id={id} />
+          <ReviewBox id={id + 1} />
+          <ReviewBox id={id + 2} />
+          <ReviewBox id={id + 3} />
+          <ReviewBox id={id + 4} />
+          <ReviewBox id={id + 5} />
+          <ReviewBox id={id + 6} />
+          <ReviewBox id={id + 7} />
+          <ReviewBox id={id + 8} />
+          <ReviewBox id={id + 9} />
+          <ReviewBox id={id + 10} />
+          <ReviewBox id={id + 11} />
+          <ReviewBox id={id + 12} />
+          <ReviewBox id={id + 13} />
+          <ReviewBox id={id + 14} />
+          <ReviewBox id={id + 15} />
+          <ReviewBox id={id + 16} />
+          <ReviewBox id={id + 17} />
+          <ReviewBox id={id + 18} />
+          <ReviewBox id={id + 19} />
+          <AllReviews>Read All Reviews</AllReviews>
+        </div>
+      </div>
+    );
   }
 }
 
