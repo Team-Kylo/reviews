@@ -62,8 +62,7 @@ class App extends React.Component {
       averageReviews: 0,
       numberOfReviews: 0,
       currentReviews: [],
-      firstFour: [],
-      lastSixteen: [],
+      reviews: [],
     };
     this.flag = this.flag.bind(this);
   }
@@ -78,22 +77,27 @@ class App extends React.Component {
           currentReviews.push(item);
         });
         currentReviews = currentReviews.slice(id, id + 20);
-        const firstFour = currentReviews.slice(0, 4);
-        const lastSixteen = currentReviews.slice(4);
+        const reviews = currentReviews.slice(0, 4);
         this.setState({
           averageReviews: averageRating / response.data.length,
           numberOfReviews: response.data.length,
           currentReviews,
-          firstFour,
-          lastSixteen,
+          reviews,
         });
       });
   }
 
   flag(event) {
+    id -= 4;
     event.preventDefault();
+    let newData = this.state.currentReviews.map((review) => {
+      return (
+        <ReviewBox id={id} key={review.dbId}></ReviewBox>
+      )
+    })
     this.setState({
       moreReviews: true,
+      reviews: newData,
     });
   }
 
@@ -113,34 +117,7 @@ class App extends React.Component {
   }
 
   render() {
-    if (!this.state.moreReviews) {
-      return (
-        <div>
-          <TotalReviews>
-            <Reviews>
-              Reviews
-            </Reviews>
-            <Stars>
-              {this.totalStars(this.state.averageReviews)}
-            </Stars>
-            <NumOfReviews>
-              {`(${this.state.numberOfReviews})`}
-            </NumOfReviews>
-          </TotalReviews>
-          {this.state.firstFour.map((review) => <ReviewBox id={id} key={review.dbId}>{id += 1}</ReviewBox>)}
-          <MoreReviews onClick={this.flag}><u><b>+ More</b></u></MoreReviews>
-        </div>
-      );
-    }
-    // if (this.state.moreReviews) {
-    //   return (
-    //     <div>
-    //       { this.state.lastSixteen.map((reviews) => <ReviewBox id={id} key={reviews.dbId}>{id += 1}</ReviewBox>) }
-    //       <AllReviews>Read All Reviews</AllReviews>
-
-    //     </div>
-    //   );
-    // }
+    // if (moreReviews)
     return (
       <div>
         <TotalReviews>
@@ -154,33 +131,19 @@ class App extends React.Component {
             {`(${this.state.numberOfReviews})`}
           </NumOfReviews>
         </TotalReviews>
-        <div>
-          <ReviewBox id={id} />
-          <ReviewBox id={id + 1} />
-          <ReviewBox id={id + 2} />
-          <ReviewBox id={id + 3} />
-          <ReviewBox id={id + 4} />
-          <ReviewBox id={id + 5} />
-          <ReviewBox id={id + 6} />
-          <ReviewBox id={id + 7} />
-          <ReviewBox id={id + 8} />
-          <ReviewBox id={id + 9} />
-          <ReviewBox id={id + 10} />
-          <ReviewBox id={id + 11} />
-          <ReviewBox id={id + 12} />
-          <ReviewBox id={id + 13} />
-          <ReviewBox id={id + 14} />
-          <ReviewBox id={id + 15} />
-          <ReviewBox id={id + 16} />
-          <ReviewBox id={id + 17} />
-          <ReviewBox id={id + 18} />
-          <ReviewBox id={id + 19} />
-          <AllReviews>Read All Reviews</AllReviews>
-        </div>
+        {this.state.reviews.map((review) => {
+          return (<ReviewBox id={id} key={review.dbId}>{id += 1}</ReviewBox>);
+        })}
+        <MoreReviews onClick={this.flag}><u><b>+ More</b></u></MoreReviews>
       </div>
     );
   }
-}
+
+    //       <AllReviews>Read All Reviews</AllReviews>
+    //     </div>
+    //   </div>
+    // );
+};
 
 ReactDOM.render(
   <App />,
