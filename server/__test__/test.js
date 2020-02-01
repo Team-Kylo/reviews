@@ -19,7 +19,7 @@ describe('Should respond to get requests to an id', () => {
   it('should respond with the expected username given an id', (done) => {
     request(app).get('/25')
       .then((resp) => {
-        expect(resp.body.username).toBe('Madelynn83');
+        expect(resp.body[24].username).toBe('Queenie_Tromp41');
         done();
       })
       .catch((err) => {
