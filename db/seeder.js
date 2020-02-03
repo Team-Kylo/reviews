@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const Faker = require('faker');
 const mongoose = require('mongoose');
 const schema = require('./schema.js');
