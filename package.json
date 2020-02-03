@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --detectOpenHandles --coverage --forceExit",
+    "circle": "jest",
     "start": "nodemon server/server.js",
     "build": "webpack -d --watch",
     "seed": "node db/seeder.js",
