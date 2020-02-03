@@ -13,11 +13,11 @@ jobs:
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
 
-    working_directory: ~/reviews
+    working_directory: ~/kylo
 
     steps:
       - checkout
-      -run:
+      - run:
         command: 'sudo npm install -g npm'
 
       # Download and cache dependencies
