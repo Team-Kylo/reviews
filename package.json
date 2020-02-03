@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --detectOpenHandles --coverage --forceExit",
-    "circle": "jest",
+    "circle": "jest --runInBand --coverage --forceExit --reporters=jest-junit",
     "start": "nodemon server/server.js",
     "build": "webpack -d --watch",
     "seed": "node db/seeder.js",
@@ -31,6 +31,7 @@
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "jest": "^25.1.0",
+    "jest-junit": "^10.0.0",
     "mongodb": "^3.5.2",
     "mongoose": "^5.8.9",
     "nodemon": "^2.0.2",
