@@ -101,7 +101,8 @@ class App extends React.Component {
     }
   }
   render() {
-    if (this.state.moreReviews === false) {
+    const { moreReviews } = this.state;
+    if (moreReviews === false) {
       return (
         <div>
           <TotalReviews>

@@ -5,3 +5,4 @@ coverage
 .eslintrc.js
 webpack.config.js
 jest.config.js
+package-lock.json

@@ -1,52 +1,42 @@
 const Faker = require('faker');
-let schema = require('./schema.js');
 const mongoose = require('mongoose');
+const schema = require('./schema.js');
+
 mongoose.connect('mongodb://localhost/reviews');
 
 
-
 // Formatted date maker
-let dateFormatter = () => {
-  let date = Faker.date.past().toString();
-  let dateFormatted = date.substring(4, 10) + ',' + date.substring(10, 15)
-  return dateFormatted
-}
+const dateFormatter = () => {
+  const date = Faker.date.past().toString();
+  const dateFormatted = `${date.substring(4, 10)},${date.substring(10, 15)}`;
+  return dateFormatted;
+};
 
 // Weighted rating generator function
-let ratingGenerator = () => {
-  let randomNum = Math.random() * 10;
+const ratingGenerator = () => {
+  const randomNum = Math.random() * 10;
   if (randomNum > 0 && randomNum < 5) {
     return 5;
-  } else if (randomNum > 5 && randomNum < 6.5) {
+  } if (randomNum > 5 && randomNum < 6.5) {
     return 4;
-  } else if (randomNum > 6.5 && randomNum < 8) {
+  } if (randomNum > 6.5 && randomNum < 8) {
     return 3;
-  } else if (randomNum > 8 && randomNum < 9) {
+  } if (randomNum > 8 && randomNum < 9) {
     return 2;
-  } else {
-    return 1;
   }
-}
+  return 1;
+};
 
 // for 100 entries
-for (var i = 10; i < 100; i++) {
-  // create individual objects
-  let document = new schema.Reviews({
-    // object id is the index
+for (let i = 10; i < 100; i++) {
+  const document = new schema.Reviews({
     dbId: i,
-    // object username is Faker.internet.userName()
     username: Faker.internet.userName(),
-    // object date is dateFormatter function
     datePosted: dateFormatter(),
-    // object imageURL https://www.placecage.com/30/30
     imageUrl: `https://www.placecage.com/100/1${i}`,
-    // object AVATARIMGURL https://www.placecage.com/50/50
     avatarImgUrl: `https://www.placecage.com/200/2${i}`,
-    // object text is Faker.lorem.paragraph()
-    text: Faker.lorem.paragraph(),
-    // object rating is a call to helper function to 'create randomized ratings'
+    text: Faker.lorem.lines(3),
     rating: ratingGenerator(),
-    // item for sale is Faker.lorem.sentence()
     itemForSale: Faker.commerce.productName(),
   })
     .save();
