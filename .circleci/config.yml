@@ -24,4 +24,10 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: npm run circle
+      - run:
+          command: npm run circle
+          environment:
+            JEST_JUNIT_OUTPUT_DIR: "reports/junit"
+      - store_test_results:
+          path: reports/junit
+
