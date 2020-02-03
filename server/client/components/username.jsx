@@ -22,23 +22,21 @@ const Date = styled.div`
 const dateFormatter = (date) => {
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   let newDate = '';
-  let arrOfDates = date.split('-');
+  const arrOfDates = date.split('-');
   arrOfDates[1] = months[arrOfDates[1] - 1];
-  newDate += arrOfDates[1] + ' ' + arrOfDates[2] + ', ' + arrOfDates[0];
+  newDate += `${arrOfDates[1]} ${arrOfDates[2]}, ${arrOfDates[0]}`;
   return newDate;
 };
 
-const UsernameAndDate = ({name, date}) => {
-  return (
-    <NameAndDate>
-      <Username>
-        {name.substring(0, 9)}
-      </Username>
-      <Date>
-        {dateFormatter(date)}
-      </Date>
-    </NameAndDate>
-  );
-};
-
+const UsernameAndDate = ({ name, date }) => (
+  <NameAndDate>
+    <Username>
+      {name.substring(0, 9)}
+    </Username>
+    <Date>
+      {dateFormatter(date)}
+    </Date>
+  </NameAndDate>
+);
+export { dateFormatter };
 export default UsernameAndDate;
