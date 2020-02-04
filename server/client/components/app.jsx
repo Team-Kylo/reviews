@@ -9,15 +9,9 @@ const axios = require('axios');
 let id = document.location.search.slice(1);
 id = Number(id);
 
-const MoreReviews = styled.button`
-  padding-left: 20px;
-  border: none;
-  background: none;
-  color: black;
-  font-size: 13px;
-  overflow-y: hidden;
+const WholeApp = styled.div`
+  overflow-y: scroll;
 `;
-
 const TotalReviews = styled.div`
   height: 15px;
   width: 500px;
@@ -53,6 +47,15 @@ const AllReviews = styled.button`
   padding: 8px 12px 8px 25px;
   font-weight: bold;
   display: inline-block;
+`;
+
+const MoreReviews = styled.button`
+  padding-left: 20px;
+  border: none;
+  background: none;
+  color: black;
+  font-size: 13px;
+  overflow: scroll;
 `;
 
 class App extends React.Component {
@@ -117,6 +120,7 @@ class App extends React.Component {
     return '★★★★★';
   }
 
+
   render() {
     let button;
     const { moreReviews, numberOfReviews, reviews } = this.state;
@@ -126,7 +130,7 @@ class App extends React.Component {
       button = <MoreReviews onClick={this.flag} className="button"><u><b>+ More</b></u></MoreReviews>;
     }
     return (
-      <div className="reviews">
+      <WholeApp>
         <TotalReviews>
           <Reviews>
             Reviews
@@ -146,7 +150,7 @@ class App extends React.Component {
         <div className="button">
           {button}
         </div>
-      </div>
+      </WholeApp>
     );
   }
 }
