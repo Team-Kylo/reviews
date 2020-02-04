@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import AvatarImg from './avatar';
 import Stars from './stars';
 import ReviewText from './reviewTxt';
@@ -33,16 +34,17 @@ class ReviewBox extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`/${this.props.id}`)
+    const { id } = this.props;
+    axios.get(`/${id}`)
       .then((response) => {
         this.setState({
-          imageUrl: response.data[this.props.id].avatarImgUrl,
-          item: response.data[this.props.id].itemForSale,
-          itemImageUrl: response.data[this.props.id].imageUrl,
-          text: response.data[this.props.id].text,
-          starRating: response.data[this.props.id].rating,
-          username: response.data[this.props.id].username,
-          datePosted: response.data[this.props.id].datePosted.slice(0, 10),
+          imageUrl: response.data[id].avatarImgUrl,
+          item: response.data[id].itemForSale,
+          itemImageUrl: response.data[id].imageUrl,
+          text: response.data[id].text,
+          starRating: response.data[id].rating,
+          username: response.data[id].username,
+          datePosted: response.data[id].datePosted.slice(0, 10),
         });
       });
   }
@@ -68,5 +70,13 @@ class ReviewBox extends React.Component {
     );
   }
 }
+
+ReviewBox.defaultProps = {
+  id: 10,
+};
+
+ReviewBox.propTypes = {
+  id: PropTypes.number,
+};
 
 export default ReviewBox;

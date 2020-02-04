@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const ItemAndLink = styled.div`
   width: 250px;
@@ -29,5 +30,14 @@ const ItemLink = ({ item, link }) => (
   </ItemAndLink>
 );
 
+ItemLink.defaultProps = {
+  item: 'A stellar item you want to buy',
+  link: 'A stellar picture of the item you want to buy',
+};
+
+ItemLink.propTypes = {
+  item: PropTypes.string,
+  link: PropTypes.string,
+};
 
 export default ItemLink;

@@ -29,7 +29,7 @@ const ratingGenerator = () => {
 };
 
 // for 100 entries
-for (let i = 10; i < 100; i++) {
+for (let i = 10; i < 100; i += 1) {
   const document = new schema.Reviews({
     dbId: i,
     username: Faker.internet.userName(),
