@@ -9,14 +9,9 @@ const axios = require('axios');
 let id = document.location.search.slice(1);
 id = Number(id);
 
-const MoreReviews = styled.button`
-  padding-left: 20px;
-  border: none;
-  background: none;
-  color: black;
-  font-size: 13px;
+const WholeApp = styled.div`
+  overflow-y: scroll;
 `;
-
 const TotalReviews = styled.div`
   height: 15px;
   width: 500px;
@@ -33,7 +28,7 @@ const Stars = styled.div`
 const Reviews = styled.div`
   font-size: 18px;
   font: Sans-serif;
-  padding-top: 5px;
+  padding-top: 2px;
 `;
 
 const NumOfReviews = styled.div`
@@ -54,114 +49,109 @@ const AllReviews = styled.button`
   display: inline-block;
 `;
 
+const MoreReviews = styled.button`
+  padding-left: 20px;
+  border: none;
+  background: none;
+  color: black;
+  font-size: 13px;
+  overflow: scroll;
+`;
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       moreReviews: false,
-      allReviews: 0,
+      averageReviews: 0,
       numberOfReviews: 0,
+      currentReviews: [],
+      reviews: [],
     };
     this.flag = this.flag.bind(this);
+    this.totalStars = this.totalStars.bind(this);
   }
 
   componentDidMount() {
     axios.get(`/${id}`)
       .then((response) => {
         let averageRating = 0;
+        let currentReviews = [];
         response.data.forEach((item) => {
           averageRating += item.rating;
+          currentReviews.push(item);
         });
+        currentReviews = currentReviews.slice(id, id + 20);
+        const reviews = currentReviews.slice(0, 4);
         this.setState({
-          allReviews: averageRating / response.data.length,
+          averageReviews: Math.round(averageRating / response.data.length),
           numberOfReviews: response.data.length,
+          currentReviews,
+          reviews,
         });
       });
   }
 
-  flag(event) {
+  flag() {
+    id -= 4;
+    const { currentReviews } = this.state;
+    const newData = currentReviews.map((review) => (
+      <ReviewBox id={id} key={review.dbId} />
+    ));
     this.setState({
       moreReviews: true,
+      reviews: newData,
     });
-    event.preventDefault();
   }
-  totalStars(stars) {
-    if (stars < 1 && stars > 0) {
+
+  totalStars() {
+    const { averageReviews } = this.state;
+    if (averageReviews < 1 && averageReviews > 0) {
       return '☆☆☆☆☆';
-    } else if (stars >= 1 && stars < 2) {
+    } if (averageReviews >= 1 && averageReviews < 2) {
       return '★☆☆☆☆';
-    } else if (stars >= 2 && stars < 3) {
+    } if (averageReviews >= 2 && averageReviews < 3) {
       return '★★☆☆☆';
-    } else if (stars >= 3 && stars < 4) {
+    } if (averageReviews >= 3 && averageReviews < 4) {
       return '★★★☆☆';
-    } else if (stars >= 4 && stars < 5) {
+    } if (averageReviews >= 4 && averageReviews < 5) {
       return '★★★★☆';
-    } else {
-      return '★★★★★';
     }
+    return '★★★★★';
   }
+
+
   render() {
-    const { moreReviews } = this.state;
-    if (moreReviews === false) {
-      return (
-        <div>
-          <TotalReviews>
-            <Reviews>
-              Reviews
-            </Reviews>
-            <Stars>
-              {this.totalStars(this.state.allReviews)}
-            </Stars>
-            <NumOfReviews>
-              {`(${this.state.numberOfReviews})`}
-            </NumOfReviews>
-            </TotalReviews>
-            <ReviewBox id={id} />
-            <ReviewBox id={id + 1} />
-            <ReviewBox id={id + 2} />
-            <ReviewBox id={id + 3} />
-          <MoreReviews onClick={this.flag}><u><b>+ More</b></u></MoreReviews>
-        </div>
-      );
+    let button;
+    const { moreReviews, numberOfReviews, reviews } = this.state;
+    if (moreReviews) {
+      button = <AllReviews className="button">Read All Reviews</AllReviews>;
+    } else {
+      button = <MoreReviews onClick={this.flag} className="button"><u><b>+ More</b></u></MoreReviews>;
     }
-      return (
-        <div>
-          <TotalReviews>
-            <Reviews>
-              Reviews
-            </Reviews>
-            <Stars>
-              {this.totalStars(this.state.allReviews)}
-            </Stars>
-            <NumOfReviews>
-              {`(${this.state.numberOfReviews})`}
-            </NumOfReviews>
-          </TotalReviews>
-          <div>
-            <ReviewBox id={id} />
-            <ReviewBox id={id + 1} />
-            <ReviewBox id={id + 2} />
-            <ReviewBox id={id + 3} />
-            <ReviewBox id={id + 4} />
-            <ReviewBox id={id + 5} />
-            <ReviewBox id={id + 6} />
-            <ReviewBox id={id + 7} />
-            <ReviewBox id={id + 8} />
-            <ReviewBox id={id + 9} />
-            <ReviewBox id={id + 10} />
-            <ReviewBox id={id + 11} />
-            <ReviewBox id={id + 12} />
-            <ReviewBox id={id + 13} />
-            <ReviewBox id={id + 14} />
-            <ReviewBox id={id + 15} />
-            <ReviewBox id={id + 16} />
-            <ReviewBox id={id + 17} />
-            <ReviewBox id={id + 18} />
-            <ReviewBox id={id + 19} />
-            <AllReviews>Read All Reviews</AllReviews>
-          </div>
+    return (
+      <WholeApp>
+        <TotalReviews>
+          <Reviews>
+            Reviews
+          </Reviews>
+          <Stars>
+            {this.totalStars()}
+          </Stars>
+          <NumOfReviews>
+            {`(${numberOfReviews})`}
+          </NumOfReviews>
+        </TotalReviews>
+        {reviews.map((review) => (
+          <ReviewBox id={id} key={review.dbId}>
+            {id += 1}
+          </ReviewBox>
+        ))}
+        <div className="button">
+          {button}
         </div>
-     )
+      </WholeApp>
+    );
   }
 }
 

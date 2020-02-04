@@ -1,12 +1,10 @@
 /* eslint-disable no-undef */
-import React from 'react';
-import Enzyme, { configure, shallow, mount, render } from 'enzyme';
+import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
 
 const request = require('supertest');
-const mongoose = require('mongoose');
 const app = require('../index.js');
 
 describe('Should respond to get requests to an id', () => {

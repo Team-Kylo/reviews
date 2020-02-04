@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 // const axios = require('axios');
 
@@ -38,5 +39,16 @@ const UsernameAndDate = ({ name, date }) => (
     </Date>
   </NameAndDate>
 );
+
+UsernameAndDate.defaultProps = {
+  name: 'Nicolas Cage',
+  date: 'Feb 21, 1994',
+};
+
+UsernameAndDate.propTypes = {
+  name: PropTypes.string,
+  date: PropTypes.string,
+};
+
 export { dateFormatter };
 export default UsernameAndDate;
