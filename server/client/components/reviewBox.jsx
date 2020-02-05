@@ -41,7 +41,7 @@ class ReviewBox extends React.Component {
       text: id.text,
       starRating: id.rating,
       username: id.username,
-      datePosted: id.datePosted.toString().slice(0, 10),
+      datePosted: id.datePosted,
     });
   }
 
