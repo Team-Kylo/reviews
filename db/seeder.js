@@ -29,16 +29,21 @@ const ratingGenerator = () => {
 };
 
 // for 100 entries
-for (let i = 10; i < 100; i += 1) {
-  const document = new schema.Reviews({
-    dbId: i,
-    username: Faker.internet.userName(),
-    datePosted: dateFormatter(),
-    imageUrl: `https://www.placecage.com/100/1${i}`,
-    avatarImgUrl: `https://www.placecage.com/200/2${i}`,
-    text: Faker.lorem.lines(3),
-    rating: ratingGenerator(),
-    itemForSale: Faker.commerce.productName(),
-  })
-    .save();
+for (let i = 0; i < 100; i += 1) {
+  let currentPictureId = 10;
+  for (let j = 0; j < 20; j += 1) {
+    const document = new schema.Reviews({
+      dbId: i,
+      urlId: j,
+      username: Faker.internet.userName(),
+      datePosted: dateFormatter(),
+      imageUrl: `https://www.placecage.com/100/1${currentPictureId}`,
+      avatarImgUrl: `https://www.placecage.com/200/2${currentPictureId}`,
+      text: Faker.lorem.lines(3),
+      rating: ratingGenerator(),
+      itemForSale: Faker.commerce.productName(),
+    })
+      .save();
+    currentPictureId += 1;
+  }
 }

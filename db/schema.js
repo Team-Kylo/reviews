@@ -1,16 +1,17 @@
 const mongoose = require('mongoose');
 
-let reviewSchema = new mongoose.Schema({
+const reviewSchema = new mongoose.Schema({
   dbId: Number,
+  urlId: Number,
   username: String,
   datePosted: Date,
   imageUrl: String,
   avatarImgUrl: String,
   text: String,
   rating: Number,
-  itemForSale: String
-})
+  itemForSale: String,
+});
 
-let Reviews = mongoose.model('Reviews', reviewSchema);
+const Reviews = mongoose.model('Reviews', reviewSchema);
 
-module.exports.Reviews = Reviews
+module.exports.Reviews = Reviews;

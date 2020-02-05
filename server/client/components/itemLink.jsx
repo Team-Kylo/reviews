@@ -31,8 +31,8 @@ const ItemLink = ({ item, link }) => (
 );
 
 ItemLink.defaultProps = {
-  item: 'A stellar item you want to buy',
-  link: 'A stellar picture of the item you want to buy',
+  item: 'https://www.placecage.com/',
+  link: 'https://www.placecage.com/',
 };
 
 ItemLink.propTypes = {
