@@ -65,7 +65,6 @@ class App extends React.Component {
       moreReviews: false,
       averageReviews: 0,
       numberOfReviews: 0,
-      currentReviews: [],
       reviews: [],
     };
     this.flag = this.flag.bind(this);
@@ -76,31 +75,22 @@ class App extends React.Component {
     axios.get(`/${id}`)
       .then((response) => {
         let averageRating = 0;
-        let currentReviews = [];
+        const reviews = [];
         response.data.forEach((item) => {
           averageRating += item.rating;
-          currentReviews.push(item);
+          reviews.push(item);
         });
-        currentReviews = currentReviews.slice(id, id + 20);
-        const reviews = currentReviews.slice(0, 4);
         this.setState({
           averageReviews: Math.round(averageRating / response.data.length),
           numberOfReviews: response.data.length,
-          currentReviews,
           reviews,
         });
       });
   }
 
   flag() {
-    id -= 4;
-    const { currentReviews } = this.state;
-    const newData = currentReviews.map((review) => (
-      <ReviewBox id={id} key={review.dbId} />
-    ));
     this.setState({
       moreReviews: true,
-      reviews: newData,
     });
   }
 
@@ -123,11 +113,18 @@ class App extends React.Component {
 
   render() {
     let button;
+    let currentReviews;
     const { moreReviews, numberOfReviews, reviews } = this.state;
     if (moreReviews) {
       button = <AllReviews className="button">Read All Reviews</AllReviews>;
+      currentReviews = reviews.map((review) => (
+        <ReviewBox id={review} key={review.urlId} />
+      ));
     } else {
       button = <MoreReviews onClick={this.flag} className="button"><u><b>+ More</b></u></MoreReviews>;
+      currentReviews = reviews.slice(0, 4).map((review) => (
+        <ReviewBox id={review} key={review.urlId} />
+      ));
     }
     return (
       <WholeApp>
@@ -142,11 +139,7 @@ class App extends React.Component {
             {`(${numberOfReviews})`}
           </NumOfReviews>
         </TotalReviews>
-        {reviews.map((review) => (
-          <ReviewBox id={id} key={review.dbId}>
-            {id += 1}
-          </ReviewBox>
-        ))}
+        {currentReviews}
         <div className="button">
           {button}
         </div>

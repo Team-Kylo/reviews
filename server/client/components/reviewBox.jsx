@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -6,8 +7,6 @@ import Stars from './stars';
 import ReviewText from './reviewTxt';
 import UsernameAndDate from './username';
 import ItemLink from './itemLink';
-
-const axios = require('axios');
 
 const Box = styled.div`
   width: 65%;
@@ -35,18 +34,15 @@ class ReviewBox extends React.Component {
 
   componentDidMount() {
     const { id } = this.props;
-    axios.get(`/${id}`)
-      .then((response) => {
-        this.setState({
-          imageUrl: response.data[id].avatarImgUrl,
-          item: response.data[id].itemForSale,
-          itemImageUrl: response.data[id].imageUrl,
-          text: response.data[id].text,
-          starRating: response.data[id].rating,
-          username: response.data[id].username,
-          datePosted: response.data[id].datePosted.slice(0, 10),
-        });
-      });
+    this.setState({
+      imageUrl: id.avatarImgUrl,
+      item: id.itemForSale,
+      itemImageUrl: id.imageUrl,
+      text: id.text,
+      starRating: id.rating,
+      username: id.username,
+      datePosted: id.datePosted,
+    });
   }
 
   render() {
@@ -72,11 +68,11 @@ class ReviewBox extends React.Component {
 }
 
 ReviewBox.defaultProps = {
-  id: 10,
+  id: {},
 };
 
 ReviewBox.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.object,
 };
 
 export default ReviewBox;

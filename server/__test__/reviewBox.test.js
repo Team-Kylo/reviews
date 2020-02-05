@@ -10,8 +10,4 @@ describe('<ReviewBox />', () => {
     const wrapper = shallow(<ReviewBox />);
     expect(wrapper.exists()).toBe(true);
   });
-  // it('should have children', () => {
-  //   const wrapper = shallow(<ReviewBox />);
-  //   expect(wrapper.find('.reviews').props.children).toHaveLength(5);
-  // });
 });

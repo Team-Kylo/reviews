@@ -35,7 +35,7 @@ const UsernameAndDate = ({ name, date }) => (
       {name.substring(0, 9)}
     </Username>
     <Date>
-      {dateFormatter(date)}
+      {dateFormatter(date.slice(0, 10))}
     </Date>
   </NameAndDate>
 );

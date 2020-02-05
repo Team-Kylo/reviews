@@ -1,9 +1,7 @@
 /* eslint-disable no-else-return */
 import React from 'react';
 import styled from 'styled-components';
-
-const axios = require('axios');
-
+import PropTypes from 'prop-types';
 
 const Star = styled.div`
   width: 50px;
@@ -13,9 +11,9 @@ const Star = styled.div`
   grid-row-start: row-two;
 `;
 
-const Stars = ({stars}) => {
+const Stars = ({ stars }) => {
   // render stars based on rating received
-  const handleRating = (rating) => {
+  const handleRating = () => {
     if (stars === 0) {
       return '☆☆☆☆☆';
     } else if (stars === 1) {
@@ -29,13 +27,21 @@ const Stars = ({stars}) => {
     } else {
       return '★★★★★';
     }
-  }
+  };
 
-    return (
-      <Star className="rating">
-        {handleRating(stars)}
-      </Star>
-    );
+  return (
+    <Star className="rating">
+      {handleRating(stars)}
+    </Star>
+  );
+};
+
+Stars.defaultProps = {
+  stars: 5,
+};
+
+Stars.propTypes = {
+  stars: PropTypes.number,
 };
 
 export default Stars;
