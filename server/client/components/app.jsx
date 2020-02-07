@@ -72,7 +72,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`/${id}`)
+    axios.get(`/reviews/${id}`)
       .then((response) => {
         let averageRating = 0;
         const reviews = [];
