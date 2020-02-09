@@ -10,8 +10,8 @@ let id = document.location.search.slice(1);
 id = Number(id);
 
 const WholeApp = styled.div`
-  overflow-y: scroll;
 `;
+
 const TotalReviews = styled.div`
   height: 15px;
   width: 500px;
@@ -55,7 +55,7 @@ const MoreReviews = styled.button`
   background: none;
   color: black;
   font-size: 13px;
-  overflow: scroll;
+ 
 `;
 
 class App extends React.Component {
@@ -118,24 +118,24 @@ class App extends React.Component {
     if (moreReviews) {
       button = <AllReviews className="button">Read All Reviews</AllReviews>;
       currentReviews = reviews.map((review) => (
-        <ReviewBox id={review} key={review.urlId} />
+        <ReviewBox className="reviewBox" id={review} key={review.urlId} />
       ));
     } else {
       button = <MoreReviews onClick={this.flag} className="button"><u><b>+ More</b></u></MoreReviews>;
       currentReviews = reviews.slice(0, 4).map((review) => (
-        <ReviewBox id={review} key={review.urlId} />
+        <ReviewBox className="reviewBox" id={review} key={review.urlId} />
       ));
     }
     return (
-      <WholeApp>
-        <TotalReviews>
-          <Reviews>
+      <WholeApp className="wholeApp">
+        <TotalReviews className="numOfReviews">
+          <Reviews className="simpleTxt">
             Reviews
           </Reviews>
-          <Stars>
+          <Stars className="starRating">
             {this.totalStars()}
           </Stars>
-          <NumOfReviews>
+          <NumOfReviews className="totalNum">
             {`(${numberOfReviews})`}
           </NumOfReviews>
         </TotalReviews>
