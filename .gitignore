@@ -4,3 +4,5 @@ server/public/index.js
 coverage
 package-lock.json
 junit.xml
+server/public/index.js.br
+server/public/index.js.gz
